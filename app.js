@@ -31,6 +31,7 @@ app.post('/register', (req, res) => {
   res.send('User registered');
 });
 
+
 // Podatność XSS
 app.get('/welcome', (req, res) => {
   const { name } = req.query;
