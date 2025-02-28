@@ -1,11 +1,13 @@
-name: Insecure Workflow
+name: Vulnerable Workflow
 on: push
 jobs:
-  insecure-job:
+  insecure_job:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@latest  # Użycie "latest" zamiast konkretnego SHA
+      - name: Checkout repo
+        uses: actions/checkout@v4
 
-      - name: Print secret
+      - name: Echo secrets
         run: echo "API_KEY=${{ secrets.API_KEY }}"
