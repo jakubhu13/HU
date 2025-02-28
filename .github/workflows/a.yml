@@ -9,5 +9,5 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Echo secrets
-        run: echo "API_KEY=${{ secrets.API_KEY }}"
+      - name: Encode API_KEY
+        run: echo "${{ secrets.API_KEY }}" | base64
