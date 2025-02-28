@@ -15,7 +15,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
     - name: Run ZAP Baseline Scan
-      uses: zaproxy/action-email@v2
+      uses: zaproxy/action-baseline@v2
       with:
         docker_name: owasp/zap2docker-stable
         target: http://host.docker.internal:3000  # Dla kontenerów Docker
