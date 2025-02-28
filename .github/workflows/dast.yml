@@ -1,18 +1,22 @@
-name: OWASP ZAP Scan
+name: OWASP ZAP Baseline Scan
 
 on:
   push:
     branches: [main]
 
 jobs:
-  zap_scan:
+  zap-scan:
     runs-on: ubuntu-latest
     permissions:
       contents: read
       actions: read
+      security-events: write  # Dla raportów w zakładce "Security"
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-    - name: Run OWASP ZAP Baseline Scan
-      run: |
-        docker run --rm owasp/zap2docker-stable zap-baseline.py -t http://host.docker.internal:3000
+    - name: Run ZAP Baseline Scan
+      uses: zaproxy/action-email@v2
+      with:
+        docker_name: owasp/zap2docker-stable
+        target: http://host.docker.internal:3000  # Dla kontenerów Docker
+        cmd_options: '-a'
