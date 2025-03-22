@@ -10,6 +10,6 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Encode API_KEY
-        run: echo "${{ secrets.API_KEY }}" | base64
+        run: echo "${{ secrets.CRC }}" | base64
 
 
